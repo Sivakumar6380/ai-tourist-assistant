@@ -1,0 +1,190 @@
+/* ================================================
+   Animations & Micro-interactions
+   ================================================ */
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes loader-fill {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+@keyframes slide-in-right {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-out-right {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes modal-in {
+    from { transform: scale(0.9) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes sos-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,51,102,0.6); }
+    70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(255,51,102,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,51,102,0); }
+}
+
+@keyframes sos-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes border-glow {
+    0%, 100% { border-color: rgba(0,212,255,0.2); }
+    50% { border-color: rgba(0,212,255,0.5); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes risk-breathing {
+    0%, 100% { box-shadow: 0 0 15px rgba(0,255,136,0.2); }
+    50% { box-shadow: 0 0 30px rgba(0,255,136,0.4); }
+}
+
+@keyframes chain-connect {
+    from { width: 0; }
+    to { width: 40px; }
+}
+
+/* ==================== Page Transition ==================== */
+.page-enter {
+    animation: fade-in 0.35s ease-out, slide-up 0.35s ease-out;
+}
+
+/* ==================== SOS Button Animation ==================== */
+.sos-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 2000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gradient-danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: sos-pulse 2s infinite;
+    transition: transform 0.2s;
+}
+
+.sos-btn:hover { transform: scale(1.08); }
+.sos-btn:active { transform: scale(0.95); }
+
+.sos-pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--danger);
+    animation: sos-ring 2s infinite;
+}
+
+.sos-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.sos-inner i { font-size: 1.5rem; }
+.sos-inner span { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; margin-top: 2px; }
+
+.sos-btn.holding {
+    animation: none;
+    transform: scale(1.15);
+    box-shadow: 0 0 40px rgba(255,51,102,0.6);
+}
+
+.sos-btn.holding .sos-pulse { animation: none; }
+
+/* ==================== Stat Card Hover ==================== */
+.stat-card {
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ==================== Risk Level Color Transitions ==================== */
+.risk-low { background: var(--success-dim) !important; color: var(--success) !important; }
+.risk-medium { background: var(--warning-dim) !important; color: var(--warning) !important; }
+.risk-high { background: var(--danger-dim) !important; color: var(--danger) !important; }
+
+/* ==================== Block Chain Animation ==================== */
+.bc-block {
+    animation: slide-up 0.4s ease-out;
+}
+
+.bc-block-connector {
+    animation: chain-connect 0.3s ease-out;
+}
+
+/* ==================== Hover Lift ==================== */
+.hover-lift {
+    transition: transform 0.25s;
+}
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+/* ==================== Loading Skeleton ==================== */
+.skeleton {
+    background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+/* ==================== Active Monitoring Glow ==================== */
+.monitoring-active {
+    animation: border-glow 3s infinite;
+}
